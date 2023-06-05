@@ -1,1 +1,37 @@
+products = {
+    "Product A": 10,
+    "Product B": 5,
+    "Product C": 8
+}
+
+# Store sale system
+while True:
+    # Display available products
+    print("Available Products:")
+    for product, stock in products.items():
+        print(product, "- Stock:", stock)
+
+    # Prompt for user input
+    selected_product = input("Enter the product you want to purchase (or 'exit' to quit): ")
+
+    # Check if user wants to exit
+    if selected_product.lower() == "exit":
+        print("Exiting the store sale system...")
+        break
+
+    # Check if selected product is available
+    if selected_product in products:
+        quantity = int(input("Enter the quantity you want to purchase: "))
+
+        # Check if there is enough stock
+        if quantity <= products[selected_product]:
+            # Update stock
+            products[selected_product] -= quantity
+            print("Purchase successful! You bought", quantity, selected_product + "(s).")
+        else:
+            print("Insufficient stock. Please choose a lower quantity or a different product.")
+    else:
+        print("Invalid product. Please choose from the available products.")
+
+    print("---------------------------------\n")
 
